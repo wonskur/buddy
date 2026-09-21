@@ -1,8 +1,7 @@
 import time
 import actions
 import os
-import sys
-def play(frames, fps=4, loops=1):
+def play(frames, fps=6, loops=1):
     for _ in range(loops):
         for frame in frames:
             print("\033[H\033[J", end="")
@@ -11,7 +10,6 @@ def play(frames, fps=4, loops=1):
 #def pretty(string):
 #    c = len(string)
 #    return "─" + "─"*c + "─" + "\n" + " " + string + "\n" + "─" + "─"*c + "─"
-import os
 
 def pretty(string):
     try:
@@ -76,6 +74,9 @@ def make(string):# Fingers crossed it actually works lol
             return calc(string)
         case "quit":
             return None
+        case "show":
+            play(getattr(actions, arg, actions.dontknow), loops=1)
+            return f"buddy shown {arg}"
         case _:
-            play(actions.dontknow,loops=1)
+            play(actions.dontknow)
             return pretty(f"Unknown command: {cmd}")
