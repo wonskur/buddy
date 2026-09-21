@@ -1,3 +1,11 @@
 import actions
 import command
-print(command.calc("calc 200 - 123"))
+
+command.play(actions.greeting,loops=1)
+while True:
+    cmd = input("\n> ")
+    result = command.make(cmd)
+    if result is None:
+        print(command.pretty("Bye!"))
+        break
+    print(result)
